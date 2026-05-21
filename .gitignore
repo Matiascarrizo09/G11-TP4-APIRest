@@ -24,6 +24,9 @@ logs
 Thumbs.db
 
 # --
-vscode/
-.husky/
-.eslintrc.json
+.vscode/
+
+
+#Build
+dist/
+coverage/
