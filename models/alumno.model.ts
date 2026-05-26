@@ -15,42 +15,36 @@ export class AlumnoModel extends PersonaModel {
 
   // Nombre
   public setNombre(nombre: string): void {
-    if (!nombre || nombre.trim() === "" || nombre.trim().length < 3) {
+    if (!this.validarNombre(nombre)) {
       throw new Error(
         "Nombre inválido.\nEl nombre no puede estar vacío y debe contener al menos tres (3) caracteres.",
       );
     } else {
-      super.setNombre(nombre);
+      super.setNombre(nombre.trim());
       this.modificacion = new Date();
     }
   }
 
   // Apellido
   public setApellido(apellido: string): void {
-    if (!apellido || apellido.trim() === "" || apellido.trim().length < 3) {
+    if (!this.validarApellido(apellido)) {
       throw new Error(
         "Apellido inválido.\nEl apellido no puede estar vacío y debe contener al menos tres (3) caracteres.",
       );
     } else {
-      super.setApellido(apellido);
+      super.setApellido(apellido.trim());
       this.modificacion = new Date();
     }
   }
 
   // e-mail
   public setEmail(email: string): void {
-    if (
-      !email ||
-      email.trim() === "" ||
-      !email.includes("@") ||
-      !email.includes(".") ||
-      email.trim().length < 5
-    ) {
+    if (!this.validarEmail(email)) {
       throw new Error(
         "E-mail inválido. Revise el formato del e-mail.\nEl e-mail no debe estar vacío, debe contener al menos 5 caracteres y debe incluir '@' y '.'",
       );
     } else {
-      super.setEmail(email);
+      super.setEmail(email.trim());
       this.modificacion = new Date();
     }
   }
@@ -88,9 +82,26 @@ export class AlumnoModel extends PersonaModel {
     return {
       legajo: this.legajo,
       ...datosPersona,
-      fechoaAlta: this.fechaAlta,
+      fechaAlta: this.fechaAlta,
       modificacion: this.modificacion,
       isActive: this.isActive, // Prettier agrega una coma al final automáticamente, aunque creo que no deberia ir. Imagino que no altera el funcionamiento.
     };
+  }
+
+  private validarNombre(nombre: string): boolean {
+    return typeof nombre === "string" && nombre.trim().length >= 3;
+  }
+
+  private validarApellido(apellido: string): boolean {
+    return typeof apellido === "string" && apellido.trim().length >= 3;
+  }
+
+  private validarEmail(email: string): boolean {
+    return (
+      typeof email === "string" &&
+      email.includes("@") &&
+      email.includes(".") &&
+      email.trim().length >= 5
+    );
   }
 }
