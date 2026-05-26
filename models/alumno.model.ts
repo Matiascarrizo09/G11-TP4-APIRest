@@ -53,19 +53,20 @@ export class AlumnoModel extends PersonaModel {
 
   // Alterna el estado de actividad (inactivo/activo)
   public setActivity(isActive: boolean): void {
-    this.isActive = !isActive;
+    this.isActive = isActive; // Eliminé el '!', ya que me di cuenta que sino, se establecía el valor opuesto al introducido, contraintuitivo.
     this.modificacion = new Date();
   }
 
   // Ver todo
   public getAllAttributes(): object {
+    // Cambié el tipo de retorno para que devuelva algo más parecido a un JSON.
     const datosPersona = super.getAllAttributes();
     return {
-      Legajo: this.legajo,
+      legajo: this.legajo,
       ...datosPersona,
-      "Fecha de alta": this.fechaAlta,
-      "Fecha de última modificación": this.modificacion,
-      "Estado de actividad": this.isActive,
+      fechoaAlta: this.fechaAlta,
+      modificacion: this.modificacion,
+      isActive: this.isActive, // Prettier agrega una coma al final automáticamente, aunque creo que no deberia ir. Imagino que no altera el funcionamiento.
     };
   }
 }
