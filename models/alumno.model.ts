@@ -15,20 +15,44 @@ export class AlumnoModel extends PersonaModel {
 
   // Nombre
   public setNombre(nombre: string): void {
-    super.setNombre(nombre);
-    this.modificacion = new Date();
+    if (!nombre || nombre.trim() === "" || nombre.trim().length < 3) {
+      throw new Error(
+        "Nombre inválido.\nEl nombre no puede estar vacío y debe contener al menos tres (3) caracteres.",
+      );
+    } else {
+      super.setNombre(nombre);
+      this.modificacion = new Date();
+    }
   }
 
   // Apellido
   public setApellido(apellido: string): void {
-    super.setApellido(apellido);
-    this.modificacion = new Date();
+    if (!apellido || apellido.trim() === "" || apellido.trim().length < 3) {
+      throw new Error(
+        "Apellido inválido.\nEl apellido no puede estar vacío y debe contener al menos tres (3) caracteres.",
+      );
+    } else {
+      super.setApellido(apellido);
+      this.modificacion = new Date();
+    }
   }
 
   // e-mail
   public setEmail(email: string): void {
-    super.setEmail(email);
-    this.modificacion = new Date();
+    if (
+      !email ||
+      email.trim() === "" ||
+      !email.includes("@") ||
+      !email.includes(".") ||
+      email.trim().length < 5
+    ) {
+      throw new Error(
+        "E-mail inválido. Revise el formato del e-mail.\nEl e-mail no debe estar vacío, debe contener al menos 5 caracteres y debe incluir '@' y '.'",
+      );
+    } else {
+      super.setEmail(email);
+      this.modificacion = new Date();
+    }
   }
 
   // Legajo
