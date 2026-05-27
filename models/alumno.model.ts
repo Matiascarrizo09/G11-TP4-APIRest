@@ -10,12 +10,25 @@ export class AlumnoModel extends PersonaModel {
     private modificacion: Date = new Date(),
     private isActive: boolean = true,
   ) {
+    if (!AlumnoModel.validarNombre(nombre)) {
+      throw new Error(
+        "Nombre inválido.\nEl nombre no puede estar vacío y debe contener al menos tres (3) caracteres.",
+      );
+    } else if (!AlumnoModel.validarApellido(apellido)) {
+      throw new Error(
+        "Apellido inválido.\nEl apellido no puede estar vacío y debe contener al menos tres (3) caracteres.",
+      );
+    } else if (!AlumnoModel.validarEmail(email)) {
+      throw new Error(
+        "E-mail inválido. Revise el formato del e-mail.\nEl e-mail no debe estar vacío, debe contener al menos 5 caracteres y debe incluir '@' y '.'",
+      );
+    }
     super(nombre, apellido, email);
   }
 
   // Nombre
   public setNombre(nombre: string): void {
-    if (!this.validarNombre(nombre)) {
+    if (!AlumnoModel.validarNombre(nombre)) {
       throw new Error(
         "Nombre inválido.\nEl nombre no puede estar vacío y debe contener al menos tres (3) caracteres.",
       );
@@ -27,7 +40,7 @@ export class AlumnoModel extends PersonaModel {
 
   // Apellido
   public setApellido(apellido: string): void {
-    if (!this.validarApellido(apellido)) {
+    if (!AlumnoModel.validarApellido(apellido)) {
       throw new Error(
         "Apellido inválido.\nEl apellido no puede estar vacío y debe contener al menos tres (3) caracteres.",
       );
@@ -39,7 +52,7 @@ export class AlumnoModel extends PersonaModel {
 
   // e-mail
   public setEmail(email: string): void {
-    if (!this.validarEmail(email)) {
+    if (!AlumnoModel.validarEmail(email)) {
       throw new Error(
         "E-mail inválido. Revise el formato del e-mail.\nEl e-mail no debe estar vacío, debe contener al menos 5 caracteres y debe incluir '@' y '.'",
       );
@@ -88,15 +101,15 @@ export class AlumnoModel extends PersonaModel {
     };
   }
 
-  private validarNombre(nombre: string): boolean {
+  private static validarNombre(nombre: string): boolean {
     return typeof nombre === "string" && nombre.trim().length >= 3;
   }
 
-  private validarApellido(apellido: string): boolean {
+  private static validarApellido(apellido: string): boolean {
     return typeof apellido === "string" && apellido.trim().length >= 3;
   }
 
-  private validarEmail(email: string): boolean {
+  private static validarEmail(email: string): boolean {
     return (
       typeof email === "string" &&
       email.includes("@") &&
