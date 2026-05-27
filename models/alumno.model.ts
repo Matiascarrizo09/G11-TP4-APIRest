@@ -14,11 +14,13 @@ export class AlumnoModel extends PersonaModel {
       throw new Error(
         "Nombre inválido.\nEl nombre no puede estar vacío y debe contener al menos tres (3) caracteres.",
       );
-    } else if (!AlumnoModel.validarApellido(apellido)) {
+    }
+    if (!AlumnoModel.validarApellido(apellido)) {
       throw new Error(
         "Apellido inválido.\nEl apellido no puede estar vacío y debe contener al menos tres (3) caracteres.",
       );
-    } else if (!AlumnoModel.validarEmail(email)) {
+    }
+    if (!AlumnoModel.validarEmail(email)) {
       throw new Error(
         "E-mail inválido. Revise el formato del e-mail.\nEl e-mail no debe estar vacío, debe contener al menos 5 caracteres y debe incluir '@' y '.'",
       );
