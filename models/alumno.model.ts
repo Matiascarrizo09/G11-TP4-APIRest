@@ -25,7 +25,7 @@ export class AlumnoModel extends PersonaModel {
         "E-mail inválido. Revise el formato del e-mail.\nEl e-mail no debe estar vacío, debe contener al menos 5 caracteres y debe incluir '@' y '.'",
       );
     }
-    super(nombre, apellido, email);
+    super(nombre.trim(), apellido.trim(), email.trim());
   }
 
   // Nombre
