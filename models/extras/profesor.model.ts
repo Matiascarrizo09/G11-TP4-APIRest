@@ -5,7 +5,7 @@ export class ProfesorModel extends PersonaModel {
     nombre: string,
     apellido: string,
     email: string,
-    private dniProfesor: string,
+    private dniProfesor: number,
     private materias: string[],
   ) {
     if (!ProfesorModel.validarNombre(nombre)) {
@@ -65,7 +65,7 @@ export class ProfesorModel extends PersonaModel {
   }
 
   // DNI Profesor
-  public getDniProfesor(): string {
+  public getDniProfesor(): number {
     return this.dniProfesor;
   }
 
