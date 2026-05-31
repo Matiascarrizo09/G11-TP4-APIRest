@@ -112,14 +112,14 @@ alumnos.json
   }
 ]
 
-Documentación Postman
+## Postman
 
 - Pendiente de integración.
 
-Deploy Render
+## Deploy Render
 
 - Pendiente de integración.
 
-Front-end
+## Front-end
 
 - Pendiente de integración.
