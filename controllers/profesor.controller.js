@@ -1,5 +1,6 @@
 const fs = require("fs").promises;
-import { ProfesorModel } from "../models/extras/profesor.model.js";
+// import { ProfesorModel } from "../models/extras/profesor.model";
+const { ProfesorModel } = require("../models/extras/profesor.model");
 
 const getProfesorAll = async (req, res) => {
   try {
@@ -90,4 +91,10 @@ const createProfesor = async (req, res) => {
     console.log(error);
     return res.status(400).json({ error: error.message });
   }
+};
+
+module.exports = {
+  getProfesorAll,
+  getProfesorByDni,
+  createProfesor,
 };

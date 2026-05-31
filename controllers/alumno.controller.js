@@ -1,5 +1,6 @@
 const fs = require("fs").promises;
-import { AlumnoModel } from "../models/alumno.model.js";
+// import { AlumnoModel } from "../models/alumno.model";
+const { AlumnoModel } = require("../models/alumno.model"); // Probando por problemas de node y docker con typescript
 
 const getAlumnoAll = async (req, res) => {
   try {
@@ -65,4 +66,10 @@ const createAlumno = async (req, res) => {
     console.log(error);
     return res.status(500).json({ error: "Error al crear el alumno." });
   }
+};
+
+module.exports = {
+  getAlumnoAll,
+  getAlumnoById,
+  createAlumno,
 };
