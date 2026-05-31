@@ -1,4 +1,4 @@
-const { Router } = require('express')
+const { Router } = require("express");
 const {
   getAlumnoAll,
   getAlumnoById,
@@ -7,7 +7,7 @@ const {
   deleteAlumno
 } = require('../controllers/alumno.controller')
 
-const rutas = Router()
+const rutas = Router();
 
 rutas.get('/', getAlumnoAll)
 rutas.get('/:legajo', getAlumnoById)
@@ -15,4 +15,4 @@ rutas.post('/', createAlumno)
 rutas.put('/:legajo', updateAlumno)
 rutas.delete('/:legajo', deleteAlumno)
 
-module.exports = rutas
+module.exports = rutas;

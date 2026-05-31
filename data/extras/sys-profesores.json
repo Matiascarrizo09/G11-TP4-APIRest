@@ -1,0 +1,23 @@
+[
+  {
+    "dniProfesor": 12345678,
+    "nombre": "Miguel",
+    "apellido": "Schnaider",
+    "email": "miguelschnaider@mail.com",
+    "materias": ["LAB01"]
+  },
+  {
+    "dniProfesor": 23456789,
+    "nombre": "Laura",
+    "apellido": "Quilmes",
+    "email": "lauraquilmes@mail.com",
+    "materias": ["PROG01", "SIST01"]
+  },
+  {
+    "dniProfesor": 34567890,
+    "nombre": "Santiago",
+    "apellido": "Palermo",
+    "email": "santiagopalermo@mail.com",
+    "materias": ["SIST01"]
+  }
+]
