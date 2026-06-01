@@ -1,5 +1,4 @@
 const fs = require("fs").promises;
-// import { ProfesorModel } from "../models/extras/profesor.model";
 const { ProfesorModel } = require("../models/extras/profesor.model");
 
 const getProfesorAll = async (req, res) => {
@@ -93,8 +92,83 @@ const createProfesor = async (req, res) => {
   }
 };
 
+const updateProfesor = async (req, res) => {
+  try {
+    const data = await fs.readFile("./data/extras/sys-profesores.json", "utf8");
+    const profesores = JSON.parse(data);
+
+    const { dni } = req.params;
+
+    const indiceProfesor = profesores.findIndex(
+      (p) => p.dniProfesor === Number(dni),
+    );
+
+    if (indiceProfesor === -1) {
+      return res.status(404).json({
+        msg: "No existe un profesor con este DNI.",
+      });
+    }
+
+    profesores[indiceProfesor] = {
+      ...profesores[indiceProfesor],
+      ...req.body,
+    };
+
+    await fs.writeFile(
+      "./data/extras/sys-profesores.json",
+      JSON.stringify(profesores, null, 2),
+    );
+
+    return res.status(200).json(profesores[indiceProfesor]);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({
+      error: "Error al actualizar profesor.",
+    });
+  }
+};
+
+const deleteProfesor = async (req, res) => {
+  try {
+    const data = await fs.readFile("./data/extras/sys-profesores.json", "utf8");
+    const profesores = JSON.parse(data);
+
+    const { dni } = req.params;
+
+    const profesorExiste = profesores.find(
+      (p) => p.dniProfesor === Number(dni),
+    );
+
+    if (!profesorExiste) {
+      return res.status(404).json({
+        msg: "No existe un profesor con este DNI.",
+      });
+    }
+
+    const profesoresActualizados = profesores.filter(
+      (p) => p.dniProfesor !== Number(dni),
+    );
+
+    await fs.writeFile(
+      "./data/extras/sys-profesores.json",
+      JSON.stringify(profesoresActualizados, null, 2),
+    );
+
+    return res.status(200).json({
+      msg: "Profesor eliminado correctamente.",
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({
+      error: "Error al eliminar profesor.",
+    });
+  }
+};
+
 module.exports = {
   getProfesorAll,
   getProfesorByDni,
   createProfesor,
+  updateProfesor,
+  deleteProfesor,
 };

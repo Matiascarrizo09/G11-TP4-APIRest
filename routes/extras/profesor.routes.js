@@ -2,18 +2,18 @@ const { Router } = require('express')
 
 const {
   getProfesorAll,
-  getProfesorById,
+  getProfesorByDni,
   createProfesor,
   updateProfesor,
   deleteProfesor
-} = require('../controllers/profesor.controller')
+} = require('../../controllers/profesor.controller')
 
 const rutas = Router()
 
 rutas.get('/', getProfesorAll)
-rutas.get('/:id', getProfesorById)
+rutas.get('/:dni', getProfesorByDni)
 rutas.post('/', createProfesor)
-rutas.put('/:id', updateProfesor)
-rutas.delete('/:id', deleteProfesor)
+rutas.put('/:dni', updateProfesor)
+rutas.delete('/:dni', deleteProfesor)
 
 module.exports = rutas
