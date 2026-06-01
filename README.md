@@ -66,7 +66,9 @@ Matías Carrizo
 - Organización de arquitectura MVC.
 - Validaciones de datos con modelos TypeScript.
 - implementacion de update and delete.
-- Deploy.
+- Desarrollo de operaciones CRUD (GET, POST, PUT, DELETE) para alumnos, profesores y materias.
+- Deploy de la API en Render.
+- Pruebas de endpoints con Postman.
 
 # Estructura del proyecto
 
