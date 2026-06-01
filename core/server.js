@@ -35,6 +35,7 @@ class Server {
 
     // manejo de errores
 
+
     this.app.use((req, res) => {
       return res.status(404).json({ msg: "Error. Pagina no encontrada" });
     });
