@@ -3,6 +3,7 @@
     "target": "ES2020",
     "module": "commonjs",
     "moduleResolution": "node",
+    "ignoreDeprecations": "6.0", // En consola avisa que hay que añadir esto ya que en futuras versiones de TypeScript, "'moduleResolution'" dejará de funcionar. Es por compatibilidad.
 
     "esModuleInterop": true,
 
