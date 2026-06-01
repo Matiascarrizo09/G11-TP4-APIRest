@@ -1,52 +1,23 @@
 [
   {
-    "legajo": 20001,
-    "nombre": "Carlos",
-    "apellido": "Ramirez",
-    "email": "c.ramirez@facultad.edu.ar",
-    "idMateria": "PROG1",
-    "fechaAlta": "2025-03-02",
-    "modificacion": "2025-03-02",
-    "isActive": true
+    "dniProfesor": 12345678,
+    "nombre": "Miguel",
+    "apellido": "Schnaider",
+    "email": "miguelschnaider@mail.com",
+    "materias": ["LAB01"]
   },
   {
-    "legajo": 20002,
-    "nombre": "Lucia",
-    "apellido": "Perez",
-    "email": "l.perez@facultad.edu.ar",
-    "idMateria": "MAT101",
-    "fechaAlta": "2025-03-02",
-    "modificacion": "2025-03-02",
-    "isActive": true
+    "dniProfesor": 23456789,
+    "nombre": "Laura",
+    "apellido": "Quilmes",
+    "email": "lauraquilmes@mail.com",
+    "materias": ["PROG01", "SIST01"]
   },
   {
-    "legajo": 20003,
-    "nombre": "Franco",
-    "apellido": "Ruiz",
-    "email": "f.ruiz@facultad.edu.ar",
-    "idMateria": "SIST1",
-    "fechaAlta": "2025-03-02",
-    "modificacion": "2025-03-02",
-    "isActive": true
-  },
-  {
-    "legajo": 20004,
-    "nombre": "Miranda",
-    "apellido": "Sosa",
-    "email": "m.sosa@facultad.edu.ar",
-    "idMateria": "LABO1",
-    "fechaAlta": "2025-03-02",
-    "modificacion": "2025-03-02",
-    "isActive": true
-  },
-  {
-    "legajo": 20005,
-    "nombre": "Claudio",
-    "apellido": "Clark",
-    "email": "c.clark@facultad.edu.ar",
-    "idMateria": "ING1",
-    "fechaAlta": "2025-03-02",
-    "modificacion": "2025-03-02",
-    "isActive": true
+    "dniProfesor": 34567890,
+    "nombre": "Santiago",
+    "apellido": "Palermo",
+    "email": "santiagopalermo@mail.com",
+    "materias": ["SIST01"]
   }
 ]

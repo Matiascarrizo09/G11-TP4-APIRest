@@ -1,63 +1,122 @@
 import { PersonaModel } from "./persona.model";
 
-export class AlumnoModel extends PersonaModel{
-    constructor(
-       protected legajo: number,
-        nombre: string,
-        apellido: string,
-        email: string,
-        protected fechaAlta: string,
-        protected modificacion: string,
-        protected isActive: boolean
-    ){
-        super(nombre, apellido, email)
+export class AlumnoModel extends PersonaModel {
+  constructor(
+    nombre: string,
+    apellido: string,
+    email: string,
+    private legajo: number,
+    private fechaAlta: Date = new Date(),
+    private modificacion: Date = new Date(),
+    private isActive: boolean = true,
+  ) {
+    if (!AlumnoModel.validarNombre(nombre)) {
+      throw new Error(
+        "Nombre inválido.\nEl nombre no puede estar vacío y debe contener al menos tres (3) caracteres.",
+      );
     }
+    if (!AlumnoModel.validarApellido(apellido)) {
+      throw new Error(
+        "Apellido inválido.\nEl apellido no puede estar vacío y debe contener al menos tres (3) caracteres.",
+      );
+    }
+    if (!AlumnoModel.validarEmail(email)) {
+      throw new Error(
+        "E-mail inválido. Revise el formato del e-mail.\nEl e-mail no debe estar vacío, debe contener al menos 5 caracteres y debe incluir '@' y '.'",
+      );
+    }
+    super(nombre, apellido, email);
+  }
 
-    //legajo
-    public getLegajo(): number{
-        return this.legajo
+  // Nombre
+  public setNombre(nombre: string): void {
+    if (!AlumnoModel.validarNombre(nombre)) {
+      throw new Error(
+        "Nombre inválido.\nEl nombre no puede estar vacío y debe contener al menos tres (3) caracteres.",
+      );
+    } else {
+      super.setNombre(nombre.trim());
+      this.modificacion = new Date();
     }
+  }
 
-    public setLegajo(legajo: number): void{
-        this.legajo = legajo
+  // Apellido
+  public setApellido(apellido: string): void {
+    if (!AlumnoModel.validarApellido(apellido)) {
+      throw new Error(
+        "Apellido inválido.\nEl apellido no puede estar vacío y debe contener al menos tres (3) caracteres.",
+      );
+    } else {
+      super.setApellido(apellido.trim());
+      this.modificacion = new Date();
     }
+  }
 
-    //fecha alta
-    public getFechaAlta(): string{
-        return this.fechaAlta
+  // e-mail
+  public setEmail(email: string): void {
+    if (!AlumnoModel.validarEmail(email)) {
+      throw new Error(
+        "E-mail inválido. Revise el formato del e-mail.\nEl e-mail no debe estar vacío, debe contener al menos 5 caracteres y debe incluir '@' y '.'",
+      );
+    } else {
+      super.setEmail(email.trim());
+      this.modificacion = new Date();
     }
+  }
 
-    public setFechaAlta(fechaAlta: string): void{
-        this.fechaAlta = fechaAlta
-    }
+  // Legajo
+  public getLegajo(): number {
+    return this.legajo;
+  }
 
-    //modificacion
-    public getModificacion(): string{
-        return this.modificacion
-    }
+  // Fecha de alta
+  public getFechaAlta(): Date {
+    return this.fechaAlta;
+  }
 
-    public setModificacion(modificacion: string): void{
-        this.modificacion = modificacion
-    }
+  // Fecha de última modificación
+  public getModificacion(): Date {
+    return this.modificacion;
+  }
 
-    //is active
-    public getIsActive(): boolean{
-        return this.isActive
-    }
+  // Estado de actividad
+  public getActivity(): boolean {
+    return this.isActive;
+  }
 
-    public setIsActive(isActive: boolean): void{
-        this.isActive = isActive
-    }
+  // Alterna el estado de actividad (inactivo/activo)
+  public setActivity(isActive: boolean): void {
+    this.isActive = isActive; // Eliminé el '!', ya que me di cuenta que sino, se establecía el valor opuesto al introducido, contraintuitivo.
+    this.modificacion = new Date();
+  }
 
-    public getAllAttributes(): object{
-        return{
-            nombre: this.getNombre(),
-            apellido: this.getApellido(),
-            email: this.getEmail(),
-            legajo: this.legajo,
-            fechaAlta: this.fechaAlta,
-            modificacion: this.modificacion,
-            isActive: this.isActive
-        }
-    }
+  // Ver todo
+  public getAllAttributes(): object {
+    // Cambié el tipo de retorno para que devuelva algo más parecido a un JSON.
+    const datosPersona = super.getAllAttributes();
+    return {
+      legajo: this.legajo,
+      ...datosPersona,
+      fechaAlta: this.fechaAlta,
+      modificacion: this.modificacion,
+      isActive: this.isActive, // Prettier agrega una coma al final automáticamente, aunque creo que no deberia ir. Imagino que no altera el funcionamiento.
+    };
+  }
+
+  private static validarNombre(nombre: string): boolean {
+    return typeof nombre === "string" && nombre.trim().length >= 3;
+  }
+
+  private static validarApellido(apellido: string): boolean {
+    return typeof apellido === "string" && apellido.trim().length >= 3;
+  }
+
+  private static validarEmail(email: string): boolean {
+    return (
+      typeof email === "string" &&
+      email.includes("@") &&
+      email.includes(".") &&
+      email.trim().length >= 5
+    );
+  }
 }
