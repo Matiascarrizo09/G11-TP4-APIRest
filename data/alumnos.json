@@ -216,12 +216,21 @@
     "isActive": true
   },
   {
+    "nombre": "matias",
+    "apellido": "carrizo",
+    "email": "l.matias.carrizo@edu.ar",
+    "legajo": 10027,
+    "fechaAlta": "2026-06-01T01:53:00.905Z",
+    "modificacion": "2026-06-01T01:53:00.905Z",
+    "isActive": true
+  },
+  {
     "nombre": "Matias",
     "apellido": "Carrizo",
     "email": "matias@gmail.com",
-    "legajo": 10026,
-    "fechaAlta": "2026-06-01T01:02:36.493Z",
-    "modificacion": "2026-06-01T01:02:36.493Z",
+    "legajo": 10028,
+    "fechaAlta": "2026-06-01T01:59:58.849Z",
+    "modificacion": "2026-06-01T01:59:58.849Z",
     "isActive": true
   }
 ]

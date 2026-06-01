@@ -13,9 +13,15 @@ class Server {
   middleware() {
     this.app.use(cors());
     this.app.use(express.json());
-  }
+  }                 
+
 
   rutas() {
+
+    this.app.get("/", (req, res) => {
+    res.send("API funcionando");
+    });
+
     this.app.use("/alumnos", require("../routes/alumno.routes"));
     /*
     this.app.use('/materias', require('../routes/extras/materia.routes'))
