@@ -27,16 +27,13 @@ class Server {
     });
 
     this.app.use("/alumnos", require("../routes/alumno.routes"));
-    /*
     this.app.use('/materias', require('../routes/extras/materia.routes'))
+    /*
     this.app.use('/notas', require('../routes/extras/nota.routes'))
     */
     this.app.use('/profesores', require('../routes/extras/profesor.routes'))
 
     // manejo de errores
-    this.app.use((req, res, next) => {
-      return res.status(400).json({ msg: "Error." });
-    });
     
     this.app.use((req, res) => {
       return res.status(404).json({ msg: "Error. Pagina no encontrada" });

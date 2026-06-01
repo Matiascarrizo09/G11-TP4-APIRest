@@ -6,7 +6,7 @@ const {
   createMateria,
   updateMateria,
   deleteMateria
-} = require('../controllers/materia.controller')
+} = require('../../controllers/materia.controller')
 
 const rutas = Router()
 
