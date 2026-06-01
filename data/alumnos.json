@@ -1,14 +1,5 @@
 [
   {
-    "legajo": 10002,
-    "nombre": "Liam",
-    "apellido": "Rodríguez",
-    "email": "l.rodriguez@facultad.edu.ar",
-    "fechaAlta": "2026-03-02",
-    "modificacion": "2026-03-02",
-    "isActive": true
-  },
-  {
     "legajo": 10003,
     "nombre": "Julieta",
     "apellido": "Martínez",
@@ -231,6 +222,15 @@
     "legajo": 10028,
     "fechaAlta": "2026-06-01T01:59:58.849Z",
     "modificacion": "2026-06-01T01:59:58.849Z",
+    "isActive": true
+  },
+  {
+    "nombre": "Matias",
+    "apellido": "Carrizo",
+    "email": "matias@gmail.com",
+    "legajo": 10029,
+    "fechaAlta": "2026-06-01T12:27:00.743Z",
+    "modificacion": "2026-06-01T12:27:00.743Z",
     "isActive": true
   }
 ]

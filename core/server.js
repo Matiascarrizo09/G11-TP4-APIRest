@@ -33,6 +33,13 @@ class Server {
     this.app.use((req, res, next) => {
       return res.status(400).json({ msg: "Error." });
     });
+    this.app.get("/", (req, res) => {
+    res.json({
+    proyecto: "TP4 API REST",
+    estado: "online",
+    endpoints: ["/alumnos"]
+    });
+    });
     this.app.use((req, res) => {
       return res.status(404).json({ msg: "Error. Pagina no encontrada" });
     });

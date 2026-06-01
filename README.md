@@ -62,11 +62,11 @@ Jeremías Claros.
 - Documentación del proyecto.
 
 Matías Carrizo
-- Configuración de TypeScript y scripts npm.
-- Configuración de Husky y entorno de desarrollo.
+- Configuración de TypeScript, Husky y entorno de desarrollo.
 - Organización de arquitectura MVC.
 - Validaciones de datos con modelos TypeScript.
 - implementacion de update and delete.
+- Deploy.
 
 # Estructura del proyecto
 
@@ -157,4 +157,4 @@ sys-profesores.json
 
 # Deploy Render
 
-- Pendiente de integración.
+https://g11-tp4-apirest.onrender.com/alumnos
