@@ -35,29 +35,47 @@ Se trabajó utilizando una metodología basada en ramas:
 
 - main: rama principal de entrega.
 - dev: rama de integración del proyecto.
-- /nombre: ramas individuales de desarrollo por integrante.
+- jeremias, matias, matko, maria: ramas individuales de desarrollo.
 
-Cada integrante realizó commits en su propia rama y posteriormente se realizaron Pull Requests hacia la rama dev.
+Flujo de trabajo:
+1. Cada integrante trabaja en su propia rama.
+2. Se realizan commits.
+3. Se hace Pull Request hacia dev.
+4. Se revisan los conflictos y se integran los cambios.
+5. Finalmente, dev se fusiona con main.
 
-Finalmente, una vez validado el funcionamiento del proyecto, se realizó el merge final hacia main.
 
-# Distribución del trabajo
+# distribucion del trabajo
+
+Matko Scabusso.
+- Desarrollo de modelos POO.
+- Implementación parcial de controladores.
+- Preparación de deploy.
+
+Maria Rodríguez.
+- Desarrollo de rutas de la API.
+- Conexión con controladores.
+
+Jeremías Claros.
+- Desarrollo de modelos en TypeScript.
+- Creación de estructura de datos JSON.
+- Documentación del proyecto.
 
 Matías Carrizo
-- Configuración de Express y middlewares.
 - Configuración de TypeScript y scripts npm.
 - Configuración de Husky y entorno de desarrollo.
 - Organización de arquitectura MVC.
 - Validaciones de datos con modelos TypeScript.
-- Integración final y depuración del proyecto.
+- implementacion de update and delete.
 
 # Estructura del proyecto
 
-/controllers
-/models
-/routes
-/data
-/core
+
+/controllers -> Lógica de la API.
+/models -> Clases y modelos TypeScript.
+/routes -> Definición de endpoints.
+/data -> Archivos JSON.
+/core -> Configuración del servidor.
 
 # Descripción de carpetas
 
@@ -65,10 +83,10 @@ Matías Carrizo
 Contiene la lógica de negocio de cada endpoint.
 
 /models
-Contiene las clases y modelos TypeScript utilizados para validar estructuras de datos.
+Contiene las clases y modelos TypeScript que representan las entidades del sistema.
 
 /routes
-Define los endpoints de la API y conecta las rutas con los controladores.
+Define los endpoints de la API y conecta las rutas con su controlador correspondiente.
 
 /data
 Almacena los archivos JSON utilizados como persistencia de datos.
@@ -100,6 +118,17 @@ Modifica un alumno existente.
 DELETE /alumnos/:legajo
 Elimina un alumno.
 
+
+# Controllers
+getAlumnoAll
+Lee el archivo alumnos.json y devuelve todos los alumnos en formato JSON.
+
+getAlumnoById
+Busca un alumno por su legajo, si lo encuentra lo devuelve, sino retorna error 404.
+
+createAlumno
+Crea un nuevo alumno con los datos del body, lo agrega al archivo alumnos.json y guarda los cambios.
+
 # Ejemplo de JSON utilizado
 
 alumnos.json
@@ -112,14 +141,20 @@ alumnos.json
   }
 ]
 
+
 # Postman
 
-- Pendiente de integración.
+sys-profesores.json
+[
+  {
+    "dniProfesor": 23456789,
+    "nombre": "Laura",
+    "apellido": "Quilmes",
+    "email": "lauraquilmes@mail.com",
+    "materias": ["PROG01", "SIST01"]
+  },
+]
 
 # Deploy Render
-
-- Pendiente de integración.
-
-# Front-end
 
 - Pendiente de integración.
