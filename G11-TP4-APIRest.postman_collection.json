@@ -1,0 +1,549 @@
+{
+  "info": {
+    "_postman_id": "79d22107-37fd-4f04-a2b0-9b468deb41ee",
+    "name": "G11-TP4-APIRest",
+    "description": "# Alumnos\n## GET\n/alumnos - Obtiene una lista de todos los alumnos.\n/alumnos/:legajo - Obtiene un alumno por su número de legajo.\n## POST\n/alumnos - Añade/crea un alumno nuevo.\n## PUT\n/alumnos/:legajo - Se actualizan los datos del alumno correspondiente al número de legajo ingresado.\n## DELETE\n/alumnos/:legajo - Elimina los datos del alumno correspondiente al número de legajo ingresado.\n\n# Profesores\n## GET\n/profesores - Obtiene una lista de todos los profesores.\n/profesores/:id - Obtiene un profesor por su número de ID.\n## POST\n/profesores - Añade/crea un profesor nuevo.\n## PUT\n/profesores/:id - Actualiza los datos del profesor correspondiente al ID ingresado.\n## DELETE\n/profesores/:id - Elimina los datos del profesor correspondiente al ID ingresado.\n\n# Materias\n## GET\n/materias - Obtiene todas las materias disponibles.\n/materias/:id - Obtiene los datos de una materia por su ID.\n## POST\n/materias - Crea una materia nueva.\n## PUT\n/materias/:id - Actualiza una materia existente por su ID.\n## DELETE\n/materias/:id - Elimina la materia especificada por su ID.\n\n# Notas\n## GET\n/notas - Obtiene una lista de todas las notas de todos los alumnos.\n/notas/:id - Obtiene las notas de un alumno especificado por su legajo.\n## POST\n/notas - Crea una nota nueva.\n## PUT\n/notas/:id - Actualiza una nota existente.\n## DELETE\n/notas/:id - Elimina una nota existente.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "50084892",
+    "_collection_link": "https://go.postman.co/collection/50084892-79d22107-37fd-4f04-a2b0-9b468deb41ee?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Alumnos",
+      "item": [
+        {
+          "name": "Obtener todos los alumnos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/alumnos",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "alumnos"
+              ]
+            },
+            "description": "# GET: /alumnos - Obtener todos los alumnos\n\nEsta URL devuelve la lista completa de los alumnos registrados en la base de datos.\n\n## Respuestas\n\n- **200:** Devuelve un array de objetos .JSON con todos los datos de todos los alumnos.\n    \n- **500**: Ocurrió un eror al intentar conseguir los alumnos.\n    \n\n## Ejemplo de respuesta\n\n\\[  \n{  \n\"legajo\": 00000,  \n\"nombre\": \"nombre1\",  \n\"apellido\": \"apellido1\",  \n\"email\": \"[email1@facultad.edu.ar](https://mailto:m.garcia@facultad.edu.ar)\",  \n\"fechaAlta\": \"2026-03-02\",  \n\"modificacion\": \"2026-03-02\",  \n\"isActive\": true  \n},  \n{  \n\"legajo\": 00001,  \n\"nombre\": \"nombre2\",  \n\"apellido\": \"apellido2\",  \n\"email\": \"[email2@facultad.edu.ar](https://mailto:l.rodriguez@facultad.edu.ar)\",  \n\"fechaAlta\": \"2026-03-02\",  \n\"modificacion\": \"2026-03-02\",  \n\"isActive\": true  \n}  \n\\]"
+          },
+          "response": []
+        },
+        {
+          "name": "Obtener un alumno",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/alumnos/:legajo",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "alumnos",
+                ":legajo"
+              ],
+              "variable": [
+                {
+                  "key": "legajo",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "# GET: /alumnos/:legajo - Obtener un alumno\n\nEsta URL devuelve un alumno específico por medio de su número de legajo.\n\n## Respuestas\n\n- **200**: Devuelve un objeto JSON con los datos del alumno especificado.\n    \n- **404:** El legajo no coincide con ningun alumno de la base de datos.\n    \n- **500**: No se pudo conseguir los datos del alumno.\n    \n\n## Ejemplo de respuesta\n\n{  \n\"legajo\": 00000,  \n\"nombre\": \"nombre1\",  \n\"apellido\": \"apellido1\",  \n\"email\": \"[email1@facultad.edu.ar](https://mailto:m.garcia@facultad.edu.ar)\",  \n\"fechaAlta\": \"2026-03-02\",  \n\"modificacion\": \"2026-03-02\",  \n\"isActive\": true  \n}"
+          },
+          "response": []
+        },
+        {
+          "name": "Agregar un alumno",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/alumnos",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "alumnos"
+              ]
+            },
+            "description": "# POST: /alumnos - Agregar un alumno\n\nEsta URL crea un alumno nuevo a partir de un objeto JSON entrante con los siguientes datos proporcionados: nombre, apellido y email. Se establecerá un número de legajo automáticamente.\n\n## Respuestas\n\n- **200**: El alumno fue creado con éxito.\n    \n- **500**: Error al intentar crear el alumno.\n    \n\n## Ejemplo de respuesta\n\n{  \n\"msg\": \"Alumno creado correctamente.\"  \n}"
+          },
+          "response": []
+        },
+        {
+          "name": "Actualizar un alumno",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/alumnos/:legajo",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "alumnos",
+                ":legajo"
+              ],
+              "variable": [
+                {
+                  "key": "legajo",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "# PUT: /alumnos/:legajo - Obtener un alumno\n\nEsta URL permite actualizar los datos de un determinado alumno especificando su número de legajo.\n\nSe pedirá un objeto JSON con alguno de los datos modificables: nombre, apellido, email y isActive. Se establecerá automáticamente la fecha y hora de la modificación realizada.\n\n## Respuestas\n\n- **200**: El alumno fue actualizado con éxito.\n    \n- **404:** El legajo no coincide con ningún alumno de la base de datos.\n    \n- **500**: Error al intentar acceder al archivo de alumnos.\n    \n\n## Ejemplo de respuesta\n\n{  \n\"msg\": \"Alumno actualizado con éxito.\"  \n}"
+          },
+          "response": []
+        },
+        {
+          "name": "Eliminar un alumno",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/alumnos/:legajo",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "alumnos",
+                ":legajo"
+              ],
+              "variable": [
+                {
+                  "key": "legajo",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "# DELETE: /alumnos/:legajo - Eliminar un alumno\n\nEsta URL elimina al alumno que corresponda con el legajo introducido en el campo `:legajo`.\n\n## Respuestas\n\n- **200**: Devuelve un mensaje de eliminación exitosa del alumno.\n    \n- **404**: El legajo introducido no coincide con ninguno en la base de datos.\n    \n- **500**: Error ocurrido al intentar eliminar el alumno.\n    \n\n## Ejemplo de respuesta\n\n{  \n\"msg\": \"Alumno eliminado exitosamente.\"  \n}"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Profesores",
+      "item": [
+        {
+          "name": "Obtener todos los profesores",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/profesores",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "profesores"
+              ]
+            },
+            "description": "# GET: /profesores - Obtener todos los profesores\n\nEsta URL devuelve una lista con todos los datos de todos los profesores en la base de datos.\n\n## Respuestas\n\n- **200**: Devuelve un array de objetos .JSON con todos los datos de todos los profesores.\n    \n- **500**: En caso de no poder acceder al archivo de profesores, saltará este error.\n    \n\n## Ejemplo de respuesta\n\n\\[  \n{  \n\"dniProfesor\": 11111111,  \n\"nombre\": \"Nombre1\",  \n\"apellido\": \"Apellido1\",  \n\"email\": \"[email1@mail.com](https://mailto:email1@mail.com)\",  \n\"materias\": \\[\"ID1\"\\]  \n},  \n{  \n\"dniProfesor\": 22222222,  \n\"nombre\": \"Nombre2\",  \n\"apellido\": \"Apellido2\",  \n\"email\": \"[email2@mail.com](https://mailto:email2@mail.com)\",  \n\"materias\": \\[\"ID1\", \"ID2\"\\]  \n}  \n\\]"
+          },
+          "response": []
+        },
+        {
+          "name": "Obtiene un profesor",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/profesores/:id",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "profesores",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "# GET: /profesores/:id - Obtener un profesor deseado\n\nEsta URL devuelve un array con los datos de un profesor en particular por medio de la inserción de su número de DNI en el campo `:id`.\n\n## Respuestas\n\n- **200**: Se devuelve correctamente el array completo con todos los datos del profesor especificado.\n    \n- **404:** El DNI proporcionado no corresponde a ningun profesor en el archivo.\n    \n- **500**: No se pudo acceder al archivo de los datos de profesores.\n    \n\n## Ejemplo de respuesta\n\n{  \n\"dniProfesor\": 11111111,  \n\"nombre\": \"Nombre1\",  \n\"apellido\": \"Apellido1\",  \n\"email\": \"[email1@mail.com](https://mailto:email1@mail.com)\",  \n\"materias\": \\[\"ID1\"\\]  \n}"
+          },
+          "response": []
+        },
+        {
+          "name": "Agregar un profesor",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/profesores",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "profesores"
+              ]
+            },
+            "description": "# POST: /profesores - Añadir un profesor\n\nEsta URL permite agregar un profesor nuevo a la lista, especificando los siguientes datos en un array JSON: DNI, nombre, apellido, email, materias asignadas.\n\n## Respuestas\n\n- **200**: Devuelve un array de objetos .JSON con todos los datos de todos los profesores.\n    \n- **400**: Se devolverá este error si el DNI proporcionado ya se encuentra en la base de datos.\n    \n- **500**: En caso de no poder acceder al archivo de profesores, saltará este error.\n    \n\n## Ejemplo de respuesta\n\n// En caso de que el DNI ya exista en la base de datos:  \n{  \nerror: \"Ya existe un profesor con este DNI.\"  \n}"
+          },
+          "response": []
+        },
+        {
+          "name": "Actualizar un profesor",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/profesores/:id",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "profesores",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "# PUT: /profesores/:id - Actualizar datos de un profesor\n\nEsta URL permite actualizar los datos modificables de un profesor ya existente especificando su número de DNI en el campo `:id`. Todos los campos son modificables.\n\n## Respuestas\n\n- **200**: Los datos del profesor se actualizaron con éxito.\n    \n- **404**: El DNI proporcionado no existe en el archivo de profesores.\n    \n- **500**: Error al intentar actualizar al profesor.\n    \n\n## Ejemplo de respuesta\n\n{  \n\"dniProfesor\": 25252525,  \n\"nombre\": \"nuevoNombre\",  \n\"apellido\": \"nuevoApellido\",  \n\"email\": \"[nuevoMail@mail.com](https://mailto:email1@mail.com)\",  \n\"materias\": \\[\"nuevoID1\"\\]  \n}"
+          },
+          "response": []
+        },
+        {
+          "name": "Eliminar un profesor",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "http://localhost:3000/profesores/:id",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "profesores",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "# DELETE: /profesores/:id - Eliminar un alumno\n\nEsta URL elimina al profesor especificado por su número de DNI.\n\n## Respuestas\n\n- **200**: EL profesor fue eliminado del registro con éxito.\n    \n- **404**: El DNI proporcionado no coincide con ninguno de los datos de los profesores.\n    \n- **500**: Hubo un error al intetar eliminar al profesor.\n    \n\n## Ejemplo de respuesta\n\n{  \n\"msg\": \"Profesor eliminado correctamente.\"  \n}"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Materias",
+      "item": [
+        {
+          "name": "Obtener todas las materias",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/materias",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "materias"
+              ]
+            },
+            "description": "# GET: /materias - Obtener todas las materias\n\nEsta URL devuelve una lista con todos los datos de todas las materias disponibles en la base de datos.\n\n## Respuestas\n\n- **200**: Devuelve un array de objetos .JSON con todos los datos de todas las materias.\n    \n- **500**: Ocurrió un error al intentar conseguir los datos de las materias.\n    \n\n## Ejemplo de respuesta\n\n\\[  \n{\n    \"idMateria\": \"id1\",\n    \"nombre\": \"materia1\",\n    \"cuatrimestre\": 1\n}, \n{\n    \"idMateria\": \"id2\",\n    \"nombre\": \"materia2\",\n    \"cuatrimestre\": 1\n},  \n\\]"
+          },
+          "response": []
+        },
+        {
+          "name": "Obtiene una materia",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/materias/:id",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "materias",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "# GET: /materias/:id - Obtener una materia en particular\n\nEsta URL devuelve los datos de una materia especificada por su ID en el campo \\`:id\\`.\n\n## Respuestas\n\n- **200**: Se devuelve un array con los datos de la materia especificada.\n    \n- **404:** El ID proporcionado no existe en el archivo de materias.\n    \n- **500**: Ocurrió un error al intentar acceder a los datos de la materia.\n    \n\n## Ejemplo de respuesta\n\n{  \n\"idMateria\": \"PROG1\",  \n\"nombre\": \"Programación I\",  \n\"cuatrimestre\": 1\n\n},"
+          },
+          "response": []
+        },
+        {
+          "name": "Agregar una materia",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/materias",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "materias"
+              ]
+            },
+            "description": "# POST: /materias - Añadir una materia\n\nEsta URL permite añadir materias nuevas, proporcionando los datos de la materia en formato JSON. Los datos a ingresar son: idMateria, nombre, cuatrimestre.\n\n## Respuestas\n\n- **200**: La materia fue añadida al archivo exitosamente.\n    \n- **400**: El ID proporcionado ya existe en los datos.\n    \n- **500**: Ocurrió un error al intentar registrar la materia.\n    \n\n## Ejemplo de respuesta\n\n{  \n\"msg\": \"Materia agregada correctamente.\"  \n}"
+          },
+          "response": []
+        },
+        {
+          "name": "Actualizar una materia",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/materias/:id",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "materias",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "# PUT: /materias/:id - Actualizar los datos de una materia\n\nEsta URL permite actualizar los datos de una materia ya existente en el archivo de materias especificando su ID en el campo `:id`. Se puede modificar: idMateria, nombre y cuatrimestre.\n\n## Respuestas\n\n- **200**: La materia fue actualizada exitosamente.\n    \n- **404**: La ID de la materia proporcionada no corresponde con ninguna materia del archivo.\n    \n- **500**: Error al intentar actualizar la materia.\n    \n\n## Ejemplo de respuesta\n\n{  \n\"idMateria\": \"nuevaID\",  \n\"nombre\": \"nuevoNombre\",  \n\"cuatrimestre\": 2 \n}"
+          },
+          "response": []
+        },
+        {
+          "name": "Eliminar una materia",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "http://localhost:3000/materias/:id",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "materias",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "# DELETE: /materias/:id - Eliminar una materia\n\nEsta URL elimina la materia especificada en el campo `:id`.\n\n## Respuestas\n\n- **200**: La materia fue eliminada exitosamente\n    \n- **404**: El ID proporcionado no existe en el archivo de materias.\n    \n- **500**: Ocurrió un error al intentar eliminar la materia.\n    \n\n## Ejemplo de respuesta\n\n{  \n\"msg\": \"Materia eliminada correctamente.\"  \n}"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Notas",
+      "item": [
+        {
+          "name": "Obtener todas las notas",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/notas",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "notas"
+              ]
+            },
+            "description": "# GET: /notas - Obtener todas las notas\n\nEsta URL devuelve _todas_ las notas registradas en la base de datos\n\n## Respuestas\n\n- **200**: Devuelve un array de objetos .JSON con todas las notas archivadas en el archivo de notas.\n    \n- **500**: Error ocurrido al intentar devolver las notas.\n    \n\n## Ejemplo de respuesta\n\n\\[  \n{  \n\"id\": 1,  \n\"legajo\": 101010,  \n\"idMateria\": \"ID1\",  \n\"nota\": 9,  \n\"fecha\": \"03-04-24\"  \n},  \n{  \n\"id\": 2,  \n\"legajo\": 101010,  \n\"idMateria\": \"ID2\",  \n\"nota\": 8,  \n\"fecha\": \"01-07-24\"  \n}  \n\\]"
+          },
+          "response": []
+        },
+        {
+          "name": "Obtiene una nota",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/notas/:id",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "notas",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "# GET: /notas/:id - Obtener una nota\n\nCon esta URL se obtiene una nota en particular, colocando su número de ID en el campo `:id`.\n\n## Respuestas\n\n- **200**: Se devuelve la nota especificada por número de ID.\n    \n- **404:** El ID especificado no coincide con ninguna nota del archivo.\n    \n- **500**: Error al intentar conseguir la nota.\n    \n\n## Ejemplo de respuesta\n\n{  \n\"id\": 1,  \n\"legajo\": 10001,  \n\"idMateria\": \"MAT101\",  \n\"nota\": 9,  \n\"fecha\": \"03-04-24\"  \n}"
+          },
+          "response": []
+        },
+        {
+          "name": "Agregar una nota",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/notas",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "notas"
+              ]
+            },
+            "description": "# POST: /notas - Agregar una nota nueva\n\nEsta URL permite agregar un profesor nuevo a la lista, especificando los siguientes datos en un array JSON: DNI, nombre, apellido, email, materias asignadas.\n\n## Respuestas\n\n- **200**: La nota fue agregada con éxito.\n    \n- **400**: El ID proporcionado corresponde a una nota ya existente en el archivo.\n    \n- **500**: Ocurrió un error al intentar crear una nota nueva.\n    \n\n## Ejemplo de respuesta\n\n{  \n\"msg\": \"Nota agregada correctamente.\"  \n}"
+          },
+          "response": []
+        },
+        {
+          "name": "Actualizar una nota",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/notas/:id",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "notas",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "# PUT: /notas/:id - Actualizar una nota existente\n\nEsta URL permite actualizar una nota existente en el archivo, especificando su ID en la url. Se puede actualizar: id, legajo, idMateria, nota y fecha.\n\n## Respuestas\n\n- **200**: Los datos de la nota se actualizaron exitosamente.\n    \n- **404**: El ID proporcionado no corresponde con alguna nota existente.\n    \n- **500**: Ocurrió un error al intentar actualizar la nota.\n    \n\n## Ejemplo de respuesta\n\n{  \n\"msg\": \"Nota actualizada correctamente.\"  \n}"
+          },
+          "response": []
+        },
+        {
+          "name": "Eliminar una nota",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "http://localhost:3000/notas/:id",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "notas",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "# DELETE: /notas/:id - Eliminar una nota\n\nEsta URL permite eliminar una nota proporcionando la ID de dicha nota en el campo `:id`.\n\n## Respuestas\n\n- **200**: La nota fue eliminada exitosamente.\n    \n- **404**: El ID no corresponde con ninguna nota existente.\n    \n- **500**: Hubo un error al intentar eliminar la nota.\n    \n\n## Ejemplo de respuesta\n\n{  \n\"msg\": \"Profesor eliminado correctamente.\"  \n}"
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
