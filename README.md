@@ -43,6 +43,7 @@ Cada integrante realizó commits en su propia rama y posteriormente se realizaro
 Finalmente, una vez validado el funcionamiento del proyecto, se realizó el merge final hacia main.
 
 Distribución del trabajo
+
 Matías Carrizo
 - Configuración de Express y middlewares.
 - Configuración de TypeScript y scripts npm.
